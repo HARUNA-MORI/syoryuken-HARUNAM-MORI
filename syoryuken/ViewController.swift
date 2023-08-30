@@ -1,22 +1,23 @@
 //
 //  ViewController.swift
-//  syoryuken
+//  昇龍拳
 //
-//  Created by 春菜森 on 2023/08/27.
+//  Created by Apple on 2023/08/28.
 //
 
 import UIKit
-
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    
+
     // ボタンをタップしてanimation開始
     @IBAction func start(_ sender: Any) {
-        
+
             // アニメーション用の画像
             let image1 = UIImage(named:"attack1")!
             let image2 = UIImage(named:"attack2")!
@@ -38,7 +39,7 @@ class ViewController: UIViewController {
             let image18 = UIImage(named:"attack18")!
             let image19 = UIImage(named:"attack19")!
             let image20 = UIImage(named:"attack20")!
-            
+
             // UIImage の配列を作る
             var imageListArray :Array<UIImage> = []
             // UIImage 各要素を追加、ちょっと冗長的ですが...
@@ -62,49 +63,50 @@ class ViewController: UIViewController {
             imageListArray.append(image18)
             imageListArray.append(image19)
             imageListArray.append(image20)
-     
+
             // 画面スクリーンサイズ
             let screenWidth = self.view.bounds.width
             let screenHeight = self.view.bounds.height
-     
+
             // 画像のサイズ
             let imageWidth = image1.size.width
             let imageHeight = image1.size.height
-     
+
             // UIImageView のインスタンス生成,ダミーでimage1を指定
-            let imageView:UIImageView = UIImageView(image:image1)
-            
+            //let imageView:UIImageView = UIImageView(image:image1)
+
             // 画像サイズからImageViewの大きさを設定していく
-            let rect = CGRect(x:0,
+            imageView.frame = CGRect(x:0,
                               y:0,
                               width:imageWidth,
                               height:imageHeight )
-            
-            imageView.frame = rect
-            
+
+            //imageView.frame = rect
+
             // 画像が画面中央にくるように位置合わせ
             imageView.center = CGPoint(x:screenWidth/2, y:screenHeight/2)
-     
+
             // view に追加する
             self.view.addSubview(imageView)
-            
+
             // 画像Arrayをアニメーションにセット
             imageView.animationImages = imageListArray
-            
+
             // 間隔（秒単位）
             imageView.animationDuration = 1
             // 繰り返し
             imageView.animationRepeatCount = 1
-            
+
             // アニメーションを開始
             imageView.startAnimating()
-            
+
             // アニメーションを終了
             //imageView.stopAnimating()
             
         }
-            
+
     }
-    
+
+
 
 
